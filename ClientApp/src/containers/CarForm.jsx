@@ -59,10 +59,10 @@ export class CarForm extends Component {
   }
 
   handleCheckboxChange(controlName, event) {
-    const updatedFeatures = this.state.Features[this.state.Features.find(event.targe)]
-    this.setState({
-      [controlName]: event.target.checked
-    })
+    // const updatedFeatures = this.state.Features[this.state.Features.find(event.target)]
+    // this.setState({
+    //   [controlName]: event.target.checked
+    // })
   }
 
   renderInputs() {
@@ -105,17 +105,17 @@ export class CarForm extends Component {
           onChange={this.handleChange.bind(null, 'VehicleRegistered')}>
         </RadioButtonGroup>
 
-        <legend>Features</legend>
+        {/* <legend>Features</legend>
         {
-          this.state.features.map(feature => {
-            return  (
+          this.state.Features.map(feature => {
+            return (
               <Checkbox name={'Features'}
-                        label={feature.Name}
-                        checked={feature.checked}
-                        onChange={this.handleCheckboxChange.bind(null, 'Features')} />
+                label={feature.Name}
+                checked={feature.checked}
+                onChange={this.handleCheckboxChange.bind(null, 'Features')} />
             )
           })
-        }
+        } */}
         <legend>Contact Information</legend>
 
         <FormGroup>

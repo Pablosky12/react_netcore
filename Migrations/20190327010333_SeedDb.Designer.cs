@@ -20,7 +20,7 @@ namespace angular_netcore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("angular_netcore.Models.Make", b =>
+            modelBuilder.Entity("angular_netcore.Models.MakeViewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace angular_netcore.Migrations
                     b.ToTable("Makes");
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.Model", b =>
+            modelBuilder.Entity("angular_netcore.Models.ModelViewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,9 +54,9 @@ namespace angular_netcore.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.Model", b =>
+            modelBuilder.Entity("angular_netcore.Models.ModelViewModel", b =>
                 {
-                    b.HasOne("angular_netcore.Models.Make", "Make")
+                    b.HasOne("angular_netcore.Models.MakeViewModel", "MakeViewModel")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade);
