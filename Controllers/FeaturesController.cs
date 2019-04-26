@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using angular_netcore.Models;
 using angular_netcore.Persistance;
-using angular_netcore.ViewModels;
+using angular_netcore.Resources;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +20,9 @@ namespace angular_netcore.Controllers
         }
 
         [HttpGet("api/features")]
-        public async Task<List<FeatureViewModel>> GetFeatures() {
+        public async Task<List<KeyValuePairResource>> GetFeatures() {
             var featureList = await _dbContext.Features.ToListAsync();
-            return _mapper.Map<List<Feature>, List<FeatureViewModel>>(featureList);
+            return _mapper.Map<List<Feature>, List<KeyValuePairResource>>(featureList);
         }
     }
 }

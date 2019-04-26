@@ -20,7 +20,7 @@ namespace angular_netcore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("angular_netcore.Models.FeatureViewModel", b =>
+            modelBuilder.Entity("angular_netcore.Models.KeyValuePairResource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,7 +33,7 @@ namespace angular_netcore.Migrations
                     b.ToTable("Features");
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.MakeViewModel", b =>
+            modelBuilder.Entity("angular_netcore.Models.MakeResource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace angular_netcore.Migrations
                     b.ToTable("Makes");
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.ModelViewModel", b =>
+            modelBuilder.Entity("angular_netcore.Models.ModelResource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,9 +67,9 @@ namespace angular_netcore.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.ModelViewModel", b =>
+            modelBuilder.Entity("angular_netcore.Models.ModelResource", b =>
                 {
-                    b.HasOne("angular_netcore.Models.MakeViewModel", "MakeViewModel")
+                    b.HasOne("angular_netcore.Models.MakeResource", "MakeResource")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade);

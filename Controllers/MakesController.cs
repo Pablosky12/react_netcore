@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using angular_netcore.Models;
 using angular_netcore.Persistance;
-using angular_netcore.ViewModels;
+using angular_netcore.Resources;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +19,10 @@ namespace angular_netcore.Controllers
             _context = context;
         }
         [HttpGet("api/makes")]
-        public async Task<IEnumerable<MakeViewModel>> GetMakes()
+        public async Task<IEnumerable<MakeResource>> GetMakes()
         {
             var makes = await _context.Makes.Include(m => m.Models).ToListAsync();
-            return _mapper.Map<List<Make>, List<MakeViewModel>>(makes);
+            return _mapper.Map<List<Make>, List<MakeResource>>(makes);
         }
     }
 }

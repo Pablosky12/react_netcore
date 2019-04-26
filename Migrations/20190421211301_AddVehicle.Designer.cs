@@ -70,7 +70,7 @@ namespace angular_netcore.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.VehicleViewModel", b =>
+            modelBuilder.Entity("angular_netcore.Models.SaveVehicleResource", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -120,7 +120,7 @@ namespace angular_netcore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("angular_netcore.Models.VehicleViewModel", b =>
+            modelBuilder.Entity("angular_netcore.Models.SaveVehicleResource", b =>
                 {
                     b.HasOne("angular_netcore.Models.Model", "Model")
                         .WithMany()
@@ -135,7 +135,7 @@ namespace angular_netcore.Migrations
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("angular_netcore.Models.VehicleViewModel", "VehicleViewModel")
+                    b.HasOne("angular_netcore.Models.SaveVehicleResource", "SaveVehicleResource")
                         .WithMany("Features")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade);

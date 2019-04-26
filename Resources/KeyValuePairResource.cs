@@ -1,6 +1,6 @@
-namespace angular_netcore.ViewModels
+namespace angular_netcore.Resources
 {
-    public class ModelViewModel
+    public class KeyValuePairResource
     {
         public int Id { get; set; }
         public string Name { get; set; }

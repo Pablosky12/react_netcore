@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace angular_netcore.Models
+namespace angular_netcore.Resources
 {
     public class ContactResource
     {
