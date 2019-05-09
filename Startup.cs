@@ -1,3 +1,4 @@
+using angular_netcore.Core;
 using angular_netcore.Persistance;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,7 @@ namespace angular_netcore
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddAutoMapper();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

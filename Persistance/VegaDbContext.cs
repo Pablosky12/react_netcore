@@ -1,4 +1,4 @@
-using angular_netcore.Models;
+using angular_netcore.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace angular_netcore.Persistance

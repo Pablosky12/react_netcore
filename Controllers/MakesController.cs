@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using angular_netcore.Models;
+using angular_netcore.Core.Models;
 using angular_netcore.Persistance;
 using angular_netcore.Resources;
 using AutoMapper;

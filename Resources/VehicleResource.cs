@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using angular_netcore.Models;
 
 namespace angular_netcore.Resources
 {
@@ -14,7 +13,6 @@ namespace angular_netcore.Resources
         public KeyValuePairResource Model { get; set; }
         public KeyValuePairResource Make { get; set; }
         public bool IsRegistered { get; set; }
-
         public ContactResource Contact { get; set; }
          public DateTime LastUpdate { get; set; }
 
