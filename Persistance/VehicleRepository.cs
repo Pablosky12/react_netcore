@@ -45,6 +45,7 @@ namespace angular_netcore.Persistance
 
         public async Task<QueryResult<Vehicle>> GetVehicles(ListFilter filter)
         {
+            var queryResult = new QueryResult<Vehicle>();
 
             var vehicleQuery = _context.Vehicles
                 .Include(v => v.Model)
@@ -62,22 +63,21 @@ namespace angular_netcore.Persistance
                 ["make"] = v => v.Model.Make,
                 ["model"] = v => v.ModelId,
                 ["contactName"] = v => v.ContactName,
-                ["id"] = v => v.ID
             };
 
-            var queryResult = new QueryResult<Vehicle>();
-            queryResult.Items = await vehicleQuery.ToListAsync(); 
-            queryResult.TotalItems = vehicleQuery.Count();
-            
             vehicleQuery = vehicleQuery.ApplySorting(filter, map);
+            queryResult.TotalItems = await vehicleQuery.CountAsync();
+
             vehicleQuery = vehicleQuery.ApplyPaging(filter);
+
+            queryResult.Items = await vehicleQuery.ToListAsync();
             return queryResult;
         }
 
         private IQueryable<Vehicle> ApplySorting(ListFilter filter, IQueryable<Vehicle> vehicleQuery, Dictionary<string, Expression<Func<Vehicle, object>>> map)
         {
             if (filter.IsSortAscending)
-                return  vehicleQuery.OrderBy(map[filter.SortBy]);
+                return vehicleQuery.OrderBy(map[filter.SortBy]);
             else
                 return vehicleQuery.OrderByDescending(map[filter.SortBy]);
         }

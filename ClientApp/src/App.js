@@ -16,8 +16,6 @@ export default class App extends Component {
       <React.Fragment>
         <Layout>
           <Route exact path="/" component={Home} />
-          <Route path="/counter" component={Counter} />
-          <Route path="/fetch-data" component={FetchData} />
           <Route exact path="/vehicle" component={NewVehicleForm} />
           <Route exact path="/vehicle/:id" component={UpdateVehicleForm} />
           <Route exact path="/vehicles" component={VehicleList} />

@@ -87,12 +87,11 @@ namespace angular_netcore.Controllers
         }
 
         [HttpGet]
-        public async Task<QueryResultResource<Vehicle>> GetVehicles(ListFilterResource filterResource)
+        public async Task<QueryResultResource<VehicleResource>> GetVehicles(ListFilterResource filterResource)
         {
             var filter = mapper.Map<ListFilterResource, ListFilter>(filterResource);
             var queryResult = await vehicleRepository.GetVehicles(filter);
-            var mappedResult = mapper.Map<QueryResult<Vehicle>, QueryResultResource<Vehicle>>(queryResult);   
-            return mappedResult;
+            return mapper.Map<QueryResult<Vehicle>, QueryResultResource<VehicleResource>>(queryResult);   
         }
     }
 }

@@ -1,38 +1,42 @@
 import React from "react";
-const Table = ({ headers, data }) => {
+const Table = ({ columns, data, headerClickFn, sorting }) => {
   return (
     <table className="table table-striped">
       <thead>
         <tr>
-          {headers.map(h => {
-            return <th> {h} </th>;
+          {columns.map(h => {
+            return (
+              <th
+                key={h.name}
+                onClick={headerClickFn ? () => headerClickFn(h) : null}
+              >
+                <a>
+                  {h.name}
+                </a>
+                &nbsp;
+                {sorting.by == h.name
+                  ? sorting.sortAscending ? "↑" : "↓"
+                  : null}
+              </th>
+            );
           })}
         </tr>
       </thead>
       <tbody>
-        {data.map(data =>
-          <tr key={data.id}>
-            <td>
-              {data.make.name}
-            </td>
-            <td>
-              {data.model.name}
-            </td>
-            <td>
-              {data.contact.name}
-            </td>
-            <td>
-              {data.isRegistered}
-            </td>
-            <td>
-              {data.features.length > 0 ? data.features.map(x => x.name).reduce((prev, curr) => prev + ' ' + curr) : ''}
-            </td>
-          </tr>
-        )}
+        {data.items
+          ? data.items.map(item =>
+              <tr key={item.id}>
+                {columns.map(col =>
+                  <td key={item.id + col.name}>
+                    {col.getPropFn(item)}
+                  </td>
+                )}
+              </tr>
+            )
+          : null}
       </tbody>
     </table>
   );
 };
-
 
 export default Table;

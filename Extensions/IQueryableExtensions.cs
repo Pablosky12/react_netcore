@@ -20,7 +20,13 @@ namespace react_netcore.Extensions
 
         public static IQueryable<T> ApplyPaging<T>(this IQueryable<T> vehicleQuery, IQueryObject filter)
         {
-            return vehicleQuery.Skip((filter.PageNumber-1) * filter.PageSize).Take(filter.PageSize);
+            if (filter.PageNumber <= 0)
+                filter.PageNumber = 1;
+
+            if (filter.PageSize <= 0)
+                filter.PageSize = 10;
+
+            return vehicleQuery.Skip((filter.PageNumber - 1) * filter.PageSize).Take(filter.PageSize);
         }
     }
 }
